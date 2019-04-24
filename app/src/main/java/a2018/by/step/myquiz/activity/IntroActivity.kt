@@ -1,5 +1,6 @@
-package a2018.by.step.myquiz
+package a2018.by.step.myquiz.activity
 
+import a2018.by.step.myquiz.R
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
