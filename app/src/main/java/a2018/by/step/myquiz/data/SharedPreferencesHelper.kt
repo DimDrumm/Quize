@@ -23,7 +23,7 @@ object SharedPreferencesHelper {
 
     fun setUser(context: Context, name: String, email: String) {
         context.getSharedPreferences(propertiesName,Context.MODE_PRIVATE).edit().apply {
-            this.putString(propertiesName,name)
+            this.putString(propertyNameName,name)
             this.putString(propertyEmailName,email)
         }.apply()
     }
