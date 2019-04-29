@@ -2,6 +2,7 @@ package a2018.by.step.myquiz.activity
 
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.SharedPreferencesHelper
+import a2018.by.step.myquiz.fragment.QuestionFragment
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,6 +16,10 @@ class IntroActivity : AppCompatActivity() {
         setContentView(R.layout.activity_intro)
     }
 
+    override fun onResume() {
+        super.onResume()
+        QuestionFragment.newInstance()
+    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
