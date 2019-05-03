@@ -28,10 +28,13 @@ object SharedPreferencesHelper {
         }.apply()
     }
 
+    fun clearData(context: Context){
+        context.getSharedPreferences(propertiesName,Context.MODE_PRIVATE).edit().clear().apply()
+    }
 }
 
 object ResourceHelper {
     fun f() {
-
     }
+
 }
