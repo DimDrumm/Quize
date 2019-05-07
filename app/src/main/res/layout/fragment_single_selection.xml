@@ -55,9 +55,9 @@
             android:text="@string/checkbox_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBox1"
             app:layout_constraintTop_toBottomOf="@+id/tv_answer"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox3"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:button="@null"
@@ -70,9 +70,9 @@
             android:text="@string/checkbox_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox3"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox2"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox4"
+            android:id="@+id/checkBox2"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox1"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:button="@null"
@@ -84,9 +84,9 @@
             android:text="@string/checkbox_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox4"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox3"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox5"
+            android:id="@+id/checkBox3"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:button="@null"
@@ -99,9 +99,9 @@
             android:text="@string/checkbox_4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox5"
-            app:layout_constraintBottom_toTopOf="@id/gl_bottom"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox4"
+            android:id="@+id/checkBox4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:button="@null"
@@ -109,22 +109,6 @@
             android:layout_marginStart="@dimen/start_margin"
             android:layout_marginEnd="@dimen/end_margin"/>
 
-    <android.support.constraint.Guideline
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent=".9"
-            android:id="@+id/gl_bottom"/>
-
-    <Button
-            android:text="@string/b_sfq_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/b_next"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gl_bottom"
-            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </android.support.constraint.ConstraintLayout>

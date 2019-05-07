@@ -11,7 +11,7 @@ object QuestionRepository {
             ChoiceQuestion(
                 "What is an activity in Android?",
                 1,
-                listOf("10", "20", "30")
+                listOf("Activity performs the actions on the screen", "20", "30")
             )
         )
         questionList.add(

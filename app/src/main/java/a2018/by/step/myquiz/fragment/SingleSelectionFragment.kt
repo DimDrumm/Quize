@@ -2,6 +2,7 @@ package a2018.by.step.myquiz.fragment
 
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.QuestionRepository
+import a2018.by.step.myquiz.model.ChoiceQuestion
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -33,8 +34,9 @@ class SingleSelectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
-        view.tv_question_number.text = getString(R.string.hint_question_number)
-        view.tv_question_text.text = QuestionRepository.getQuestions()[0].toString()
+        view.tv_question_text.text = QuestionRepository.getQuestions()[0].text
+        //TODO set text for answers
+        view.checkBox1.text = "Activity performs the actions on the screen"
         return view
     }
 

@@ -9,7 +9,7 @@ abstract class Question<T>(
 class ChoiceQuestion(
     text: String,
     rightAnswer: Int,
-    val answers: List<String>
+    answers: List<String>
 ) : Question<Int>(text, rightAnswer) {
     override fun checkAnswer(): Boolean {
         return userAnswer == rightAnswer
