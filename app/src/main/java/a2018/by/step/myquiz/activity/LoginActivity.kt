@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         etEmail = findViewById(R.id.et_email)
         etName = et_name
         Log.d(LoginActivity::class.java.simpleName,"etName "+etName.hashCode())
-        val btn: Button = findViewById<Button>(R.id.btn_login)
+        val btn: Button = findViewById(R.id.btn_login)
         btn.setOnClickListener(this)
     }
 
@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun validateName(): Boolean {
-        return etName.text.toString().length > 4 && etName.text.toString().length <= 16
+        return etName.text.toString().length in 5..16
     }
 
     private fun validateEmail(): Boolean {

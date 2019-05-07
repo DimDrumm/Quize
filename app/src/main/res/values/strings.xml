@@ -9,4 +9,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logout">Logout</string>
+    <string name="Exit">Exit</string>
+    <string name="start_button">Button</string>
+    <string name="tv_question_number">TextView</string>
+    <string name="tv_question_text">TextView</string>
+    <string name="Answer">TextView</string>
+    <string name="checkbox_1">CheckBox</string>
+    <string name="checkbox_2">CheckBox</string>
+    <string name="checkbox_3">CheckBox</string>
+    <string name="checkbox_4">CheckBox</string>
 </resources>

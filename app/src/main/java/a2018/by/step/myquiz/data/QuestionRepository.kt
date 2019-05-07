@@ -9,7 +9,7 @@ object QuestionRepository {
         val questionList = mutableListOf<Question<*>>()
         questionList.add(
             ChoiceQuestion(
-                "How much is the fish?",
+                "What is an activity in Android?",
                 1,
                 listOf("10", "20", "30")
             )

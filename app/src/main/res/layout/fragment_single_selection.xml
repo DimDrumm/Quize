@@ -6,7 +6,112 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.SingleSelectionFragment"
-        android:id="@+id/frameLayout">
+        android:id="@+id/fr_single_question_selection">
 
 
+    <TextView
+            tools:text="Question Number"
+            android:text="@string/tv_question_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_question_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/end_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/start_margin"
+            android:layout_marginTop="@dimen/top_margin"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:text="@string/tv_question_text"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/tv_question_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/start_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/end_margin"
+            app:layout_constraintTop_toBottomOf="@+id/tv_question_number"
+            android:layout_marginTop="32dp"
+            app:layout_constraintVertical_bias="0.5"
+            />
+
+    <TextView
+            android:text="@string/Answer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_answer"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_question_text"/>
+
+    <CheckBox
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_bias=".2"
+            app:layout_constraintHorizontal_bias=".2"
+            android:text="@string/checkbox_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_answer"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+            android:layout_marginStart="@dimen/start_margin"
+            android:layout_marginEnd="@dimen/end_margin"
+            />
+
+    <CheckBox
+            android:text="@string/checkbox_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox3"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+            android:layout_marginStart="@dimen/start_margin"
+            android:layout_marginEnd="@dimen/end_margin"/>
+
+    <CheckBox
+            android:text="@string/checkbox_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox4"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox3"
+            app:layout_constraintBottom_toTopOf="@+id/checkBox5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+            android:layout_marginStart="@dimen/start_margin"
+            android:layout_marginEnd="@dimen/end_margin"
+            />
+
+    <CheckBox
+            android:text="@string/checkbox_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox5"
+            app:layout_constraintBottom_toTopOf="@id/gl_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:button="@null"
+            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+            android:layout_marginStart="@dimen/start_margin"
+            android:layout_marginEnd="@dimen/end_margin"/>
+
+    <android.support.constraint.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent=".9"
+            android:id="@+id/gl_bottom"/>
 </android.support.constraint.ConstraintLayout>
