@@ -10,6 +10,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
+import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_single_selection.*
 import kotlinx.android.synthetic.main.fragment_single_selection.view.*
 
 private const val ARG_PARAM1 = "param1"
@@ -17,10 +20,10 @@ private const val ARG_PARAM2 = "param2"
 
 
 class SingleSelectionFragment : Fragment() {
+    val questionRepository = QuestionRepository
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,8 +37,22 @@ class SingleSelectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
-        view.tv_question_text.text = QuestionRepository.getQuestions()[0].text
-        view.radioButton1.text = "Activity performs the actions on the screen"
+        val radioGroup = view.rg
+        val questionType = questionRepository.getQuestions()[0] as ChoiceQuestion
+        view.tv_question_text.text = questionType.text
+        view.radioButton1.text = questionType.answers[0]
+        view.radioButton2.text = questionType.answers[1]
+        view.radioButton3.text = questionType.answers[2]
+        radioGroup.setOnCheckedChangeListener { radioGroup, checkedId ->
+            when(checkedId){
+                R.id.radioButton1 -> if (questionType.checkAnswer()) {
+                    questionRepository.rightAnswersCounter()
+                    Toast.makeText(activity, "Right Answer", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+        }
         return view
     }
 
@@ -62,8 +79,6 @@ class SingleSelectionFragment : Fragment() {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     *
-     *
      * See the Android Training lesson [Communicating with Other Fragments]
      * (http://developer.android.com/training/basics/fragments/communicating.html)
      * for more information.
@@ -92,5 +107,4 @@ class SingleSelectionFragment : Fragment() {
                 }
             }
     }
-
 }

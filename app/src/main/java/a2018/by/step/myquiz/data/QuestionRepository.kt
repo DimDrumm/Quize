@@ -5,13 +5,18 @@ import a2018.by.step.myquiz.model.Question
 import a2018.by.step.myquiz.model.TextQuestion
 
 object QuestionRepository {
+    var rightAnswers = 0
     fun getQuestions(): List<Question<*>> {
         val questionList = mutableListOf<Question<*>>()
         questionList.add(
             ChoiceQuestion(
                 "What is an activity in Android?",
                 1,
-                listOf("Activity performs the actions on the screen", "20", "30")
+                listOf(
+                    "Activity performs the actions on the screen",
+                    "Manage the Application content",
+                    "Screen UI"
+                )
             )
         )
         questionList.add(
@@ -21,5 +26,8 @@ object QuestionRepository {
             )
         )
         return questionList
+    }
+    fun rightAnswersCounter(){
+        rightAnswers++
     }
 }

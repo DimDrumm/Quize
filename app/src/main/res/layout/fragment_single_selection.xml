@@ -56,31 +56,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
         <RadioButton
-                android:text="@string/radiobutton_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton1"/>
 
         <RadioButton
-                android:text="@string/radiobutton_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton2"/>
 
         <RadioButton
-                android:text="@string/radiobutton_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton3"/>
-
-        <RadioButton
-                android:text="@string/radiobutton_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioButton4"/>
     </RadioGroup>
 
 
