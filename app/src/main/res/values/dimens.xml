@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="button_bottom">24</dimen>
-    <dimen name="bottom_margin">8</dimen>
-    <dimen name="top_margin">8</dimen>
-    <dimen name="start_margin">8</dimen>
-    <dimen name="end_margin">8</dimen>
+    <dimen name="button_bottom">24dp</dimen>
+    <dimen name="bottom_margin">8dp</dimen>
+    <dimen name="top_margin">8dp</dimen>
+    <dimen name="start_margin">8dp</dimen>
+    <dimen name="end_margin">8dp</dimen>
 
 </resources>

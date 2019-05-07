@@ -1,6 +1,7 @@
 package a2018.by.step.myquiz.fragment
 
 import a2018.by.step.myquiz.R
+import a2018.by.step.myquiz.data.QuestionRepository
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_single_selection.view.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -30,11 +32,12 @@ class SingleSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_single_selection, container, false)
+        val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
+        view.tv_question_number.text = getString(R.string.hint_question_number)
+        view.tv_question_text.text = QuestionRepository.getQuestions()[0].toString()
+        return view
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
     }
@@ -44,7 +47,7 @@ class SingleSelectionFragment : Fragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
     }
 

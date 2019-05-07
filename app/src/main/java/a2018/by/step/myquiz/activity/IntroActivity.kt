@@ -3,25 +3,22 @@ package a2018.by.step.myquiz.activity
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.SharedPreferencesHelper
 import a2018.by.step.myquiz.fragment.QuestionFragment
+import a2018.by.step.myquiz.fragment.SingleSelectionFragment
 import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_intro.*
-import kotlinx.android.synthetic.main.fragment_single_selection.*
 
-class IntroActivity : AppCompatActivity() {
-    lateinit var fragment:QuestionFragment
+class IntroActivity : AppCompatActivity(),SingleSelectionFragment.OnFragmentInteractionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
-        btn_intro.setOnClickListener {
-
-        }
-        val fragmentManager = supportFragmentManager
+        Log.d("IntroActivity","Test")
+        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer,SingleSelectionFragment()).commit()
     }
-
 
     override fun onResume() {
         super.onResume()
@@ -48,5 +45,9 @@ class IntroActivity : AppCompatActivity() {
 
     interface onActivityDataListener {
         fun onActivityDataListener()
+    }
+
+    override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

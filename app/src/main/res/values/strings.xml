@@ -18,4 +18,6 @@
     <string name="checkbox_2">CheckBox</string>
     <string name="checkbox_3">CheckBox</string>
     <string name="checkbox_4">CheckBox</string>
+    <string name="hint_question_number">Question:</string>
+    <string name="b_sfq_next">Button</string>
 </resources>
