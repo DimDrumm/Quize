@@ -1,8 +1,5 @@
 package a2018.by.step.myquiz.fragment
 
-import a2018.by.step.myquiz.R
-import a2018.by.step.myquiz.data.QuestionRepository
-import a2018.by.step.myquiz.model.ChoiceQuestion
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -10,13 +7,25 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_single_selection.view.*
 
+import a2018.by.step.myquiz.R
+
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-
-class SingleSelectionFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Activities that contain this fragment must implement the
+ * [ManySelectionQuestion.OnFragmentInteractionListener] interface
+ * to handle interaction events.
+ * Use the [ManySelectionQuestion.newInstance] factory method to
+ * create an instance of this fragment.
+ *
+ */
+class ManySelectionQuestion : Fragment() {
+    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
@@ -33,12 +42,11 @@ class SingleSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
-        view.tv_question_text.text = QuestionRepository.getQuestions()[0].text
-        view.radioButton1.text = "Activity performs the actions on the screen"
-        return view
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_many_selection, container, false)
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
     }
@@ -48,7 +56,7 @@ class SingleSelectionFragment : Fragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            throw RuntimeException("$context must implement OnFragmentInteractionListener")
+            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
     }
 
@@ -80,17 +88,16 @@ class SingleSelectionFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SingleSelectionFragment.
+         * @return A new instance of fragment ManySelectionQuestion.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SingleSelectionFragment().apply {
+            ManySelectionQuestion().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
     }
-
 }

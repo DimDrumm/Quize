@@ -20,4 +20,8 @@
     <string name="checkbox_4">CheckBox</string>
     <string name="hint_question_number">Question:</string>
     <string name="b_sfq_next">Button</string>
+    <string name="radiobutton_1">RadioButton</string>
+    <string name="radiobutton_2">RadioButton</string>
+    <string name="radiobutton_3">RadioButton</string>
+    <string name="radiobutton_4">RadioButton</string>
 </resources>

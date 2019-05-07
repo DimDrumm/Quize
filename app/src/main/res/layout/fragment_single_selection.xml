@@ -48,67 +48,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_question_text"/>
 
-    <CheckBox
-            app:layout_constraintVertical_chainStyle="spread"
-            app:layout_constraintVertical_bias=".2"
-            app:layout_constraintHorizontal_bias=".2"
-            android:text="@string/checkbox_1"
+    <RadioGroup
+            android:id="@+id/rg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_answer"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox2"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_answer"
             app:layout_constraintStart_toStartOf="parent"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-            android:layout_marginStart="@dimen/start_margin"
-            android:layout_marginEnd="@dimen/end_margin"
-            />
-
-    <CheckBox
-            android:text="@string/checkbox_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox1"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-            android:layout_marginStart="@dimen/start_margin"
-            android:layout_marginEnd="@dimen/end_margin"/>
-
-    <CheckBox
-            android:text="@string/checkbox_3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox3"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox2"
-            app:layout_constraintBottom_toTopOf="@+id/checkBox4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-            android:layout_marginStart="@dimen/start_margin"
-            android:layout_marginEnd="@dimen/end_margin"
-            />
-
-    <CheckBox
-            android:text="@string/checkbox_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox4"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:button="@null"
-            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
-            android:layout_marginStart="@dimen/start_margin"
-            android:layout_marginEnd="@dimen/end_margin"/>
+            android:orientation="vertical"
+            >
+        <RadioButton
+                android:text="@string/radiobutton_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton1"/>
 
+        <RadioButton
+                android:text="@string/radiobutton_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton2"/>
+
+        <RadioButton
+                android:text="@string/radiobutton_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton3"/>
+
+        <RadioButton
+                android:text="@string/radiobutton_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton4"/>
+    </RadioGroup>
 
 
 </android.support.constraint.ConstraintLayout>
