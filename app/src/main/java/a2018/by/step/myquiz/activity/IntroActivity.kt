@@ -2,6 +2,7 @@ package a2018.by.step.myquiz.activity
 
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.SharedPreferencesHelper
+import a2018.by.step.myquiz.fragment.OnFragmentListener
 import a2018.by.step.myquiz.fragment.QuestionFragment
 import a2018.by.step.myquiz.fragment.SingleSelectionFragment
 import android.content.Intent
@@ -12,12 +13,12 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 
-class IntroActivity : AppCompatActivity(),SingleSelectionFragment.OnFragmentInteractionListener {
+class IntroActivity : AppCompatActivity(), OnFragmentListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
-        Log.d("IntroActivity","Test")
-        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer,SingleSelectionFragment()).commit()
+        Log.d("IntroActivity", "Test")
+        supportFragmentManager.beginTransaction().add(R.id.fl_fragment_container, SingleSelectionFragment()).commit()
     }
 
     override fun onResume() {
@@ -47,7 +48,7 @@ class IntroActivity : AppCompatActivity(),SingleSelectionFragment.OnFragmentInte
         fun onActivityDataListener()
     }
 
-    override fun onFragmentInteraction(uri: Uri) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onFragmentListener() {
+        supportFragmentManager.beginTransaction().replace(R.id.fl_fragment_container, QuestionFragment()).commit()
     }
 }

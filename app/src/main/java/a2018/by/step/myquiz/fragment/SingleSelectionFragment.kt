@@ -23,7 +23,7 @@ class SingleSelectionFragment : Fragment() {
     val questionRepository = QuestionRepository
     private var param1: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
+    private var listener: OnFragmentListener? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -44,11 +44,12 @@ class SingleSelectionFragment : Fragment() {
         view.radioButton2.text = questionType.answers[1]
         view.radioButton3.text = questionType.answers[2]
         radioGroup.setOnCheckedChangeListener { radioGroup, checkedId ->
-            when(checkedId){
-                R.id.radioButton1 -> if (questionType.checkAnswer()) {
-                    questionRepository.rightAnswersCounter()
+            when (checkedId) {
+                R.id.radioButton1 -> {
                     Toast.makeText(activity, "Right Answer", Toast.LENGTH_SHORT).show()
+                    listener?.onFragmentListener()
                 }
+                R.id.radioButton2, R.id.radioButton3 -> listener?.onFragmentListener()
 
             }
 
@@ -56,13 +57,10 @@ class SingleSelectionFragment : Fragment() {
         return view
     }
 
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
+        if (context is OnFragmentListener) {
             listener = context
         } else {
             throw RuntimeException("$context must implement OnFragmentInteractionListener")
