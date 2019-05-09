@@ -24,6 +24,58 @@ object QuestionRepository {
                 "10 days"
             )
         )
+        questionList.add(
+            ChoiceQuestion(
+                "What is an activity in Android?",
+                1,
+                listOf(
+                    "Activity performs the actions on the screen",
+                    "Manage the Application content",
+                    "Screen UI"
+                )
+            )
+        )
+        questionList.add(
+            ChoiceQuestion(
+                "What is an activity in Android?",
+                1,
+                listOf(
+                    "Activity performs the actions on the screen",
+                    "Manage the Application content",
+                    "Screen UI"
+                )
+            )
+        )
+        questionList.add(
+            ChoiceQuestion(
+                "What is an activity in Android?",
+                1,
+                listOf(
+                    "Activity performs the actions on the screen",
+                    "Manage the Application content",
+                    "Screen UI"
+                )
+            )
+        )
+        questionList.add(
+            TextQuestion(
+                "How much time Dzima didn't sleep",
+                "10 days"
+            )
+        )
+        questionList.add(
+            TextQuestion(
+                "How much time Dzima didn't sleep",
+                "10 days"
+            )
+        )
+        questionList.add(
+            TextQuestion(
+                "How much time Dzima didn't sleep",
+                "10 days"
+            )
+        )
+
         return questionList
     }
 }

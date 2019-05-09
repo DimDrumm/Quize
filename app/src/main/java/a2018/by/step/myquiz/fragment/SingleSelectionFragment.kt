@@ -38,7 +38,6 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("SingleSelectionFragment", "onCreateView")
         val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
         val radioGroup = view.rg
         for (i in 0 until questionType.answers.size) {
@@ -62,23 +61,19 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
 
 
     override fun onAttach(context: Context) {
-        Log.d("SingleSelectionFragment", "call QuestionType()")
-        listener?.getQuestionType()
-        Log.d("SingleSelectionFragment", "$listener")
         super.onAttach(context)
         if (context is OnFragmentListener) {
             listener = context
-            listener?.getQuestionType()
-            Log.d("SingleSelectionFragment", "${listener.toString()}")
+
         } else {
             throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
     }
-//
-//    override fun onDetach() {
-//        super.onDetach()
-//        listener = null
-//    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
 
     /**
      * This interface must be implemented by activities that contain this
@@ -117,5 +112,6 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
     override fun getQuestionTypeFromActivity(question: Question<*>) {
         Log.d("SingleSelectionFragment", "getQuestionTypeFromActivity")
         questionType = question as ChoiceQuestion
+        Log.d("SingleSelectionFragment", "${questionType.toString()}")
     }
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.activity.OnActivityListener
+import a2018.by.step.myquiz.activity.QuizeData
 import a2018.by.step.myquiz.model.Question
 import kotlinx.android.synthetic.main.fragment_result.view.*
 import kotlinx.android.synthetic.main.fragment_text_question.view.*
@@ -29,6 +30,7 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class ResultFragment : Fragment() {
+    val results = QuizeData()
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -47,6 +49,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
        val view =  inflater.inflate(R.layout.fragment_result, container, false)
+        view.tv_result.text = results.getRightQuantityAnswers().toString()
         return view
     }
 
