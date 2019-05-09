@@ -9,11 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 
 import a2018.by.step.myquiz.R
+import a2018.by.step.myquiz.activity.OnActivityListener
+import a2018.by.step.myquiz.data.QuestionRepository
+import a2018.by.step.myquiz.model.Question
+import kotlinx.android.synthetic.main.fragment_text_question.view.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class QuestionFragment : Fragment() {
+class TextQuestionFragment : Fragment(),OnActivityListener {
+    val questionRepository = QuestionRepository
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentListener? = null
@@ -30,7 +35,11 @@ class QuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_question, container, false)
+        val view = inflater.inflate(R.layout.fragment_text_question, container, false)
+        view.button_Ok.setOnClickListener {
+            listener?.changeFragment()
+        }
+        return view
     }
 
 
@@ -55,6 +64,10 @@ class QuestionFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = QuestionFragment()
+        fun newInstance() = TextQuestionFragment()
+    }
+
+    override fun getQuestionTypeFromActivity(question: Question<*>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

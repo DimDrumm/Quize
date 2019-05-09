@@ -1,6 +1,8 @@
 package a2018.by.step.myquiz.activity
 
+import a2018.by.step.myquiz.model.Question
+
 
 interface OnActivityListener {
-    fun onActivityListener()
+    fun getQuestionTypeFromActivity(question: Question<*>)
 }

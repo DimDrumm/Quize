@@ -5,7 +5,6 @@ import a2018.by.step.myquiz.model.Question
 import a2018.by.step.myquiz.model.TextQuestion
 
 object QuestionRepository {
-    var rightAnswers = 0
     fun getQuestions(): List<Question<*>> {
         val questionList = mutableListOf<Question<*>>()
         questionList.add(
@@ -26,8 +25,5 @@ object QuestionRepository {
             )
         )
         return questionList
-    }
-    fun rightAnswersCounter(){
-        rightAnswers++
     }
 }

@@ -24,4 +24,5 @@
     <string name="radiobutton_2">RadioButton</string>
     <string name="radiobutton_3">RadioButton</string>
     <string name="radiobutton_4">RadioButton</string>
+    <string name="input_your_answer">Input your answer</string>
 </resources>
