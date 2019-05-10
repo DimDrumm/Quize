@@ -7,10 +7,10 @@ import a2018.by.step.myquiz.fragment.ResultFragment
 import a2018.by.step.myquiz.fragment.SingleSelectionFragment
 import a2018.by.step.myquiz.fragment.TextQuestionFragment
 import a2018.by.step.myquiz.model.ChoiceQuestion
-import a2018.by.step.myquiz.model.Question
 import a2018.by.step.myquiz.model.TextQuestion
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
@@ -23,7 +23,7 @@ class IntroActivity : AppCompatActivity(), OnFragmentListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
         Log.d("IntroActivity", "rendering layout")
-        choseFirstFragment()
+        getFragment()
     }
 
     override fun onResume() {
@@ -50,74 +50,42 @@ class IntroActivity : AppCompatActivity(), OnFragmentListener {
     }
 
 
-    override fun changeFragment() {
-        val question = quizeData.getRandomQuestion()
-        Log.d("IntroActivity", "${question.toString()}")
-        val fragmentManager = supportFragmentManager
-        var fragment = fragmentManager.findFragmentById(R.id.fr_single_question_selection)
-        fragment = null
-        if (fragment == null) {
-            when (question) {
-                is TextQuestion -> {
-                    fragment = TextQuestionFragment()
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.fl_fragment_container,
-                        fragment
-                    ).commit()
-                    listener = fragment
-                    getQuestionType(question)
-                }
-                is ChoiceQuestion -> {
-                    fragment = SingleSelectionFragment()
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.fl_fragment_container,
-                        SingleSelectionFragment()
-                    ).commit()
-                    listener = fragment
-                    Log.d("IntroActivity", "$listener")
-                    getQuestionType(question)
-                }
-                null -> {
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.fl_fragment_container,
-                        ResultFragment()
-                    ).commit()
-                }
-            }
-        }
+    override fun changeFragment(data:Data) {
+        quizeData.answeredQuestionsList.add(data)
+        getFragment()
     }
 
-    private fun choseFirstFragment() {
+    private fun getFragment() {
+        val fragment: Fragment
         val type = quizeData.getRandomQuestion()
-        val fragmentManager = supportFragmentManager
-        var fragment = fragmentManager.findFragmentById(R.id.fr_single_question_selection)
-        Log.d("IntroActivity", "choseFirstFragment")
+        Log.d("IntroActivity", "getFragment")
         if (type is ChoiceQuestion) {
-            if (fragment == null) {
-                Log.d("IntroActivity", "SingleSelectionFragment")
-                fragment = SingleSelectionFragment()
-                supportFragmentManager.beginTransaction().add(
-                    R.id.fl_fragment_container,
-                    fragment
-                ).commit()
-                listener = fragment
-                getQuestionType(type)
-            }
+            Log.d("IntroActivity", "SingleSelectionFragment")
+            fragment = SingleSelectionFragment()
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fl_fragment_container,
+                fragment
+            ).commit()
+            listener = fragment
+            listener.getQuestionTypeFromActivity(type)
         } else if (type is TextQuestion) {
-            if (fragment == null) {
-                Log.d("IntroActivity", "TextQuestionFragment")
-                fragment = TextQuestionFragment()
-                supportFragmentManager.beginTransaction().add(
-                    R.id.fl_fragment_container,
-                    fragment
-                ).commit()
-                listener = fragment
-                getQuestionType(type)
-            }
+            Log.d("IntroActivity", "TextQuestionFragment")
+            fragment = TextQuestionFragment()
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fl_fragment_container,
+                fragment
+            ).commit()
+            listener = fragment
+            listener.getQuestionTypeFromActivity(type)
+        }else {
+            fragment = ResultFragment()
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fl_fragment_container,
+                fragment
+            ).commit()
+            listener = fragment
+            listener.results(quizeData.getRightQuantityAnswers())
         }
     }
 
-    override fun getQuestionType(type: Question<*>) {
-        listener.getQuestionTypeFromActivity(type)
-    }
 }

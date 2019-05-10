@@ -1,7 +1,9 @@
 package a2018.by.step.myquiz.fragment
 
 import a2018.by.step.myquiz.R
+import a2018.by.step.myquiz.activity.Data
 import a2018.by.step.myquiz.activity.OnActivityListener
+import a2018.by.step.myquiz.activity.QuizeData
 import a2018.by.step.myquiz.model.ChoiceQuestion
 import a2018.by.step.myquiz.model.Question
 import android.content.Context
@@ -14,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_single_selection.*
 import kotlinx.android.synthetic.main.fragment_single_selection.view.*
 
 private const val ARG_PARAM1 = "param1"
@@ -21,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
 
 
 class SingleSelectionFragment : Fragment(), OnActivityListener {
-    lateinit var questionType: ChoiceQuestion
+    lateinit var question: ChoiceQuestion
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentListener? = null
@@ -40,22 +43,21 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
         val radioGroup = view.rg
-        for (i in 0 until questionType.answers.size) {
+        for (i in 0 until question.answers.size) {
             radioButton = RadioButton(activity)
-            radioButton.id = i
-            radioButton.text = questionType.answers[i]
+            radioButton.id = i + 1
+            radioButton.text = question.answers[i]
             radioGroup.addView(radioButton)
         }
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            //TODO work only for first radioButton in the list
-            when (checkedId) {
-                0 -> {
-                    Toast.makeText(activity, "Right Answer", Toast.LENGTH_SHORT).show()
-                    listener?.changeFragment()
-                }
-                1,2 -> listener?.changeFragment()
+            question.userAnswer = checkedId.toString()
+            val answer = question.checkAnswer()
+            if (answer) {
+                Toast.makeText(activity, "Right Answer", Toast.LENGTH_LONG).show()
             }
+            listener?.changeFragment(Data(answer, question))
         }
+        Log.d("SingleSelectionFragment", radioGroup.checkedRadioButtonId.toString())
         return view
     }
 
@@ -64,7 +66,6 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
         super.onAttach(context)
         if (context is OnFragmentListener) {
             listener = context
-
         } else {
             throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
@@ -109,9 +110,11 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
             }
     }
 
-    override fun getQuestionTypeFromActivity(question: Question<*>) {
-        Log.d("SingleSelectionFragment", "getQuestionTypeFromActivity")
-        questionType = question as ChoiceQuestion
-        Log.d("SingleSelectionFragment", "${questionType.toString()}")
+    override fun getQuestionTypeFromActivity(q: Question<*>) {
+        question = q as ChoiceQuestion
+    }
+
+    override fun results(result: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

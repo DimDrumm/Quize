@@ -29,9 +29,8 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class ResultFragment : Fragment() {
-    val results = QuizeData()
-    // TODO: Rename and change types of parameters
+class ResultFragment : Fragment(),OnActivityListener {
+    var result: Int = 0
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentListener? = null
@@ -49,7 +48,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
        val view =  inflater.inflate(R.layout.fragment_result, container, false)
-        view.tv_result.text = results.getRightQuantityAnswers().toString()
+        view.tv_result.text = result.toString()
         return view
     }
 
@@ -104,4 +103,11 @@ class ResultFragment : Fragment() {
             }
     }
 
+    override fun getQuestionTypeFromActivity(q: Question<*>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun results(result: Int) {
+        this.result = result
+    }
 }

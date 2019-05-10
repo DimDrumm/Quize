@@ -9,7 +9,6 @@ import java.util.*
 class QuizeData {
     val questions = mutableListOf<Question<*>>().apply { addAll(QuestionRepository.getQuestions()) }
     var answeredQuestionsList = mutableListOf<Data>()
-
     fun getRandomQuestion(): Question<*>? {
         return if (questions.isEmpty()) {
             null
@@ -27,7 +26,6 @@ class QuizeData {
         var rightAnswerQuantity = 0
         for (item in answeredQuestionsList) {
             if (item.isRight) {
-                //  Log.d("QuizeData","$rightAnswerQuantity")
                 rightAnswerQuantity++
             }
         }

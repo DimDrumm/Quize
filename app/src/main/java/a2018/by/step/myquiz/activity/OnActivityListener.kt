@@ -4,5 +4,6 @@ import a2018.by.step.myquiz.model.Question
 
 
 interface OnActivityListener {
-    fun getQuestionTypeFromActivity(question: Question<*>)
+    fun getQuestionTypeFromActivity(q:Question<*>)
+    fun results(result: Int)
 }

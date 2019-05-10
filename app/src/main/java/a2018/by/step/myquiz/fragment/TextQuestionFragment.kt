@@ -9,19 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 
 import a2018.by.step.myquiz.R
+import a2018.by.step.myquiz.activity.Data
 import a2018.by.step.myquiz.activity.OnActivityListener
-import a2018.by.step.myquiz.activity.QuizeData
 import a2018.by.step.myquiz.data.QuestionRepository
 import a2018.by.step.myquiz.model.ChoiceQuestion
 import a2018.by.step.myquiz.model.Question
 import a2018.by.step.myquiz.model.TextQuestion
+import kotlinx.android.synthetic.main.fragment_text_question.*
 import kotlinx.android.synthetic.main.fragment_text_question.view.*
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class TextQuestionFragment : Fragment(), OnActivityListener {
-    lateinit var questionType: TextQuestion
+    lateinit var question: TextQuestion
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentListener? = null
@@ -39,9 +40,9 @@ class TextQuestionFragment : Fragment(), OnActivityListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_text_question, container, false)
-        view.tv_question_text.text = questionType.text
+        view.tv_question_text.text = question.text
         view.button_Ok.setOnClickListener {
-            listener?.changeFragment()
+            listener?.changeFragment(Data(false,question))
         }
         return view
     }
@@ -71,7 +72,11 @@ class TextQuestionFragment : Fragment(), OnActivityListener {
         fun newInstance() = TextQuestionFragment()
     }
 
-    override fun getQuestionTypeFromActivity(question: Question<*>) {
-        questionType = question as TextQuestion
+    override fun getQuestionTypeFromActivity(q: Question<*>) {
+        question = q as TextQuestion
+    }
+
+    override fun results(result: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

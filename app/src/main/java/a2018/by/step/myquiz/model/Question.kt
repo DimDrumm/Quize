@@ -4,7 +4,7 @@ abstract class Question<out T>(
     val text: String,
     val rightAnswer: T
 ) {
-    val userAnswer: T? = null
+   var userAnswer: String? = null
     abstract fun checkAnswer(): Boolean
 }
 
@@ -14,8 +14,9 @@ class ChoiceQuestion(
     val answers: List<String>
 ) : Question<Int>(text, rightAnswer) {
     override fun checkAnswer(): Boolean {
-        return userAnswer == rightAnswer
+        return userAnswer.equals(rightAnswer.toString())
     }
+
 }
 
 class TextQuestion(
@@ -25,4 +26,5 @@ class TextQuestion(
     override fun checkAnswer(): Boolean {
         return rightAnswer.equals(userAnswer, true)
     }
+
 }

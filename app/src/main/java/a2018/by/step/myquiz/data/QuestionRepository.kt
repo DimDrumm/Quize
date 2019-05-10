@@ -26,23 +26,23 @@ object QuestionRepository {
         )
         questionList.add(
             ChoiceQuestion(
-                "What is an activity in Android?",
-                1,
+                "is it 2",
+                2,
                 listOf(
-                    "Activity performs the actions on the screen",
-                    "Manage the Application content",
-                    "Screen UI"
+                    "no",
+                    "yes",
+                    "why"
                 )
             )
         )
         questionList.add(
             ChoiceQuestion(
-                "What is an activity in Android?",
-                1,
+                "is it 2",
+                3,
                 listOf(
-                    "Activity performs the actions on the screen",
-                    "Manage the Application content",
-                    "Screen UI"
+                    "no",
+                    "why",
+                    "yes"
                 )
             )
         )
