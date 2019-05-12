@@ -12,7 +12,6 @@ object SharedPreferencesHelper {
         context.getSharedPreferences(propertiesName, Context.MODE_PRIVATE).apply {
             val name = this.getString(propertyNameName, null)
             val email = this.getString(propertyEmailName, name)
-
             if (name != null || email != null) {
                 return User(name!!, email!!)
             } else {

@@ -2,10 +2,32 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/logout"
-          app:showAsAction="never"
-          android:id="@+id/menu_logout"/>
-    <item android:title="@string/Exit"
-          app:showAsAction="never"
-          android:id="@+id/menu_Exit"/>
+    <item
+            android:title="@string/settings"
+            android:orderInCategory="3"
+            android:id="@+id/settings"
+            app:showAsAction="never">
+        <menu>
+            <item
+                    android:title="@string/logout"
+                    android:id="@+id/menu_logout"
+                    android:icon="@android:drawable/ic_lock_idle_low_battery"/>
+            <item
+                    android:title="@string/Exit"
+                    android:icon="@android:drawable/presence_offline"
+                    android:id="@+id/menu_Exit"/>
+        </menu>
+    </item>
+
+    <item
+            android:title="@string/User_Info"
+            app:showAsAction="never"
+            android:orderInCategory="1"
+            android:id="@+id/user_info"/>
+    <item
+            android:title="@string/Prompt"
+            android:icon="@android:drawable/star_big_on"
+            android:orderInCategory="2"
+            app:showAsAction="ifRoom"
+            android:id="@+id/prompt"/>
 </menu>

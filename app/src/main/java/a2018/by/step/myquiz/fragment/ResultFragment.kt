@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.activity.OnActivityListener
 import a2018.by.step.myquiz.activity.QuizeData
+import a2018.by.step.myquiz.data.SharedPreferencesHelper
 import a2018.by.step.myquiz.model.Question
 import kotlinx.android.synthetic.main.fragment_result.view.*
 import kotlinx.android.synthetic.main.fragment_text_question.view.*
@@ -48,6 +49,8 @@ class ResultFragment : Fragment(),OnActivityListener {
         savedInstanceState: Bundle?
     ): View? {
        val view =  inflater.inflate(R.layout.fragment_result, container, false)
+        view.tv_user_name.text = SharedPreferencesHelper.getUser(context!!.applicationContext)!!.
+            email + getString(R.string.your_result)
         view.tv_result.text = result.toString()
         return view
     }

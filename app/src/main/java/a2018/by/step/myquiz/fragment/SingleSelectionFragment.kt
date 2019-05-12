@@ -42,6 +42,7 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
+        view.tv_question_text.text = question.text
         val radioGroup = view.rg
         for (i in 0 until question.answers.size) {
             radioButton = RadioButton(activity)
@@ -53,7 +54,7 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
             question.userAnswer = checkedId.toString()
             val answer = question.checkAnswer()
             if (answer) {
-                Toast.makeText(activity, "Right Answer", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Right Answer", Toast.LENGTH_SHORT).show()
             }
             listener?.changeFragment(Data(answer, question))
         }

@@ -49,6 +49,7 @@
             android:layout_marginStart="16dp"/>
 
     <Button
+            android:text="@string/b_sfq_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_Ok"

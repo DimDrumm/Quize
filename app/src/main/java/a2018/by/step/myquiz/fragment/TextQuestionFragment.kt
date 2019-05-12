@@ -15,6 +15,7 @@ import a2018.by.step.myquiz.data.QuestionRepository
 import a2018.by.step.myquiz.model.ChoiceQuestion
 import a2018.by.step.myquiz.model.Question
 import a2018.by.step.myquiz.model.TextQuestion
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_text_question.*
 import kotlinx.android.synthetic.main.fragment_text_question.view.*
 
@@ -43,6 +44,12 @@ class TextQuestionFragment : Fragment(), OnActivityListener {
         view.tv_question_text.text = question.text
         view.button_Ok.setOnClickListener {
             listener?.changeFragment(Data(false,question))
+            question.userAnswer = et_answer.text.toString()
+            val answer = question.checkAnswer()
+            if (answer) {
+                Toast.makeText(activity, "Right Answer", Toast.LENGTH_SHORT).show()
+            }
+            listener?.changeFragment(Data(answer, question))
         }
         return view
     }

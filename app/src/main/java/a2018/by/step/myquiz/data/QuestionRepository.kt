@@ -11,6 +11,7 @@ object QuestionRepository {
             ChoiceQuestion(
                 "What is an activity in Android?",
                 1,
+                "performs the actions",
                 listOf(
                     "Activity performs the actions on the screen",
                     "Manage the Application content",
@@ -21,6 +22,7 @@ object QuestionRepository {
         questionList.add(
             TextQuestion(
                 "How much time Dzima didn't sleep",
+                "5+5",
                 "10 days"
             )
         )
@@ -28,6 +30,7 @@ object QuestionRepository {
             ChoiceQuestion(
                 "is it 2",
                 2,
+                "yes",
                 listOf(
                     "no",
                     "yes",
@@ -39,6 +42,7 @@ object QuestionRepository {
             ChoiceQuestion(
                 "is it 2",
                 3,
+                "yes",
                 listOf(
                     "no",
                     "why",
@@ -50,6 +54,7 @@ object QuestionRepository {
             ChoiceQuestion(
                 "What is an activity in Android?",
                 1,
+                "performs the actions",
                 listOf(
                     "Activity performs the actions on the screen",
                     "Manage the Application content",
@@ -60,19 +65,22 @@ object QuestionRepository {
         questionList.add(
             TextQuestion(
                 "How much time Dzima didn't sleep",
-                "10 days"
+                "10 days",
+                "5+5"
             )
         )
         questionList.add(
             TextQuestion(
                 "How much time Dzima didn't sleep",
-                "10 days"
+                "10 days",
+                "5+5"
             )
         )
         questionList.add(
             TextQuestion(
                 "How much time Dzima didn't sleep",
-                "10 days"
+                "10 days",
+                "5+5"
             )
         )
 

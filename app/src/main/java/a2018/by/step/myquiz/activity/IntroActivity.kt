@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 
 class IntroActivity : AppCompatActivity(), OnFragmentListener {
     private val quizeData = QuizeData()
@@ -28,7 +29,7 @@ class IntroActivity : AppCompatActivity(), OnFragmentListener {
 
     override fun onResume() {
         super.onResume()
-//        TextQuestionFragment.newInstance()
+        TextQuestionFragment.newInstance()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -39,6 +40,13 @@ class IntroActivity : AppCompatActivity(), OnFragmentListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.menu_logout -> logout()
+            R.id.prompt -> Toast.makeText(applicationContext, "Text", Toast.LENGTH_SHORT).show()
+            R.id.menu_Exit -> {
+                startActivity(
+                    Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+            }
+            R.id.user_info -> startActivity(Intent(applicationContext,UserInfoActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
@@ -50,7 +58,7 @@ class IntroActivity : AppCompatActivity(), OnFragmentListener {
     }
 
 
-    override fun changeFragment(data:Data) {
+    override fun changeFragment(data: Data) {
         quizeData.answeredQuestionsList.add(data)
         getFragment()
     }
@@ -77,7 +85,7 @@ class IntroActivity : AppCompatActivity(), OnFragmentListener {
             ).commit()
             listener = fragment
             listener.getQuestionTypeFromActivity(type)
-        }else {
+        } else {
             fragment = ResultFragment()
             supportFragmentManager.beginTransaction().replace(
                 R.id.fl_fragment_container,
