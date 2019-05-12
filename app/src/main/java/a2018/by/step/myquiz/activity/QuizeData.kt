@@ -6,17 +6,17 @@ import android.util.Log
 import java.util.*
 
 
-class QuizeData {
+object QuizeData {
     val questions = mutableListOf<Question<*>>().apply { addAll(QuestionRepository.getQuestions()) }
     var answeredQuestionsList = mutableListOf<Data>()
-
+    var promptQuantity = 1
     fun getRandomQuestion(): Question<*>? {
         return if (questions.isEmpty()) {
             null
         } else {
             val item = Random().nextInt(questions.size)
             val returnQuestion = questions[item]
-            Log.d("QuizeData","$returnQuestion")
+            Log.d("QuizeData", "$returnQuestion")
             answeredQuestionsList.add(Data(questions[item].checkAnswer(), questions[item]))
             questions.removeAt(item)
             returnQuestion
@@ -32,7 +32,15 @@ class QuizeData {
         }
         return rightAnswerQuantity
     }
+
+    fun promptRemaining(isUse: Boolean): Int {
+        if (isUse) {
+            promptQuantity--
+        }
+        return promptQuantity
+    }
 }
 
-class Data(val isRight: Boolean, val question: Question<*>)
+
+class Data(val isRight: Boolean, val question: Question<*>, var isPromtUse: Boolean = false)
 

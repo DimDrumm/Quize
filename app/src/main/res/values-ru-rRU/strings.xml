@@ -13,4 +13,5 @@
     <string name="User_name">User name</string>
     <string name="user_second_name">User second name</string>
     <string name="user_email">user_email</string>
+    <string name="get_prompt">Get Prompt</string>
 </resources>

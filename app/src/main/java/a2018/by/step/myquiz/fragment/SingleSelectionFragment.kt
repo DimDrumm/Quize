@@ -11,9 +11,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.RadioButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_single_selection.*
@@ -24,6 +22,7 @@ private const val ARG_PARAM2 = "param2"
 
 
 class SingleSelectionFragment : Fragment(), OnActivityListener {
+    var isPromptUse = false
     lateinit var question: ChoiceQuestion
     private var param1: String? = null
     private var param2: String? = null
@@ -44,6 +43,7 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
         val view = inflater.inflate(R.layout.fragment_single_selection, container, false)
         view.tv_question_text.text = question.text
         val radioGroup = view.rg
+        registerForContextMenu(view.tv_get_prompt)
         for (i in 0 until question.answers.size) {
             radioButton = RadioButton(activity)
             radioButton.id = i + 1
@@ -56,7 +56,7 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
             if (answer) {
                 Toast.makeText(activity, "Right Answer", Toast.LENGTH_SHORT).show()
             }
-            listener?.changeFragment(Data(answer, question))
+            listener?.changeFragment(Data(answer, question, isPromptUse))
         }
         Log.d("SingleSelectionFragment", radioGroup.checkedRadioButtonId.toString())
         return view
@@ -118,4 +118,12 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
     override fun results(result: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        if(QuizeData.promptQuantity != 0){
+            isPromptUse = true
+            menu!!.add(question.prompt)
+        }
+    }
+
 }
