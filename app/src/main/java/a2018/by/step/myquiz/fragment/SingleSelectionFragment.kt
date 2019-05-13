@@ -13,14 +13,14 @@ class SingleSelectionFragment : Fragment() {
         Log.d("SingleSelectionFragment", "SingleSelectionFragment init")
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d("SingleSelectionFragment", "OnCreateMethod")
-    }
-
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         Log.d("SingleSelectionFragment", "onAttachMethod")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("SingleSelectionFragment", "OnCreateMethod")
     }
 
     override fun onCreateView(
