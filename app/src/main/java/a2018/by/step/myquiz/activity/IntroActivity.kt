@@ -8,33 +8,22 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_intro.*
+import kotlinx.android.synthetic.main.activity_login.*
 
-class IntroActivity : AppCompatActivity() {
-
+class IntroActivity : BaseMenuActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
+        btn_start.setOnClickListener {
+            startActivity(Intent(this, QuestionActivity::class.java))
+        }
     }
 
     override fun onResume() {
         super.onResume()
         QuestionFragment.newInstance()
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.menu_logout -> logout()
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
-    private fun logout() {
-        SharedPreferencesHelper.clearData(applicationContext)
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
-    }
 }
