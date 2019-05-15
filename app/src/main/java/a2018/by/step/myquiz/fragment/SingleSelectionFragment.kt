@@ -1,5 +1,7 @@
 package a2018.by.step.myquiz.fragment
 
+import a2018.by.step.myquiz.R
+import a2018.by.step.myquiz.model.Question
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -23,13 +25,12 @@ class SingleSelectionFragment : Fragment() {
         Log.d("SingleSelectionFragment", "OnCreateMethod")
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater,
+                              container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         Log.d("SingleSelectionFragment", "OnCreateViewMethod")
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_single_selection,
+            container,false)
     }
 
     override fun onStart() {

@@ -28,12 +28,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/guideline"
             app:layout_constraintBottom_toTopOf="@id/btn_next">
         <RadioButton
+                tools:text="Variant 1"
+                android:id="@+id/radio_btn_1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="32dp"/>
+        <RadioButton
+                tools:text="Variant 2"
+                android:id="@+id/radio_btn_2"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"/>
+        <RadioButton
+                tools:text="Variant 3"
+                android:id="@+id/radio_btn_3"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"/>
+        <RadioButton
+                tools:text="Variant 4"
+                android:id="@+id/radio_btn_4"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"/>
     </RadioGroup>
 
     <Button

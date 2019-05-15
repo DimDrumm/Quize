@@ -41,7 +41,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 applicationContext,
                 etName.text.toString(), etEmail.text.toString()
             )
-            startActivity(Intent(this, IntroActivity::class.java))
+            val intent = Intent(this, IntroActivity::class.java)
+            intent.putExtra("name",etEmail.text.toString())
+            startActivity(intent)
             finish()
         }
     }

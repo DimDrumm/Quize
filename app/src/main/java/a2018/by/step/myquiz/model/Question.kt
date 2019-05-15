@@ -1,7 +1,8 @@
 package a2018.by.step.myquiz.model
 
 abstract class Question<T>(
-    val text: String, var rightAnswer: T) {
+    val text: String, var rightAnswer: T
+) {
     var userAnswer: T? = null
     abstract fun checkAnswer(): Boolean
 }
