@@ -14,7 +14,6 @@ import android.util.Log
 import android.view.*
 import android.widget.RadioButton
 import android.widget.Toast
-import kotlinx.android.synthetic.main.fragment_single_selection.*
 import kotlinx.android.synthetic.main.fragment_single_selection.view.*
 
 private const val ARG_PARAM1 = "param1"
@@ -119,11 +118,11 @@ class SingleSelectionFragment : Fragment(), OnActivityListener {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
-        if(QuizeData.promptQuantity != 0){
-            isPromptUse = true
-            menu!!.add(question.prompt)
-        }
-    }
+//    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+//        if(QuizeData.promptQuantity != 0){
+//            isPromptUse = true
+//            menu!!.add(question.prompt)
+//        }
+//    }
 
 }

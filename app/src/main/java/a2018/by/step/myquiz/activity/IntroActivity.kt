@@ -18,7 +18,6 @@ import android.view.MenuItem
 import android.widget.Toast
 
 class IntroActivity : BaseMenuActivity() {
-    private val quizeData = QuizeData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

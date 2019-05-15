@@ -38,5 +38,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="1.0"/>
 
+    <android.support.constraint.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline2"/>
+
 
 </android.support.constraint.ConstraintLayout>

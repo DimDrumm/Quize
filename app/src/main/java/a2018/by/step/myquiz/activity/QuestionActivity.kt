@@ -7,14 +7,13 @@ import a2018.by.step.myquiz.fragment.SingleSelectionFragment
 import a2018.by.step.myquiz.fragment.TextQuestionFragment
 import a2018.by.step.myquiz.model.ChoiceQuestion
 import a2018.by.step.myquiz.model.TextQuestion
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
-import android.view.Menu
 
 class QuestionActivity : BaseMenuActivity(), OnFragmentListener {
     lateinit var listener: OnActivityListener
+    val quizeData = QuizeData(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,16 +26,16 @@ class QuestionActivity : BaseMenuActivity(), OnFragmentListener {
     }
 
     override fun changeFragment(data: Data) {
-        QuizeData.apply {
-            QuizeData.promptRemaining(data.isPromtUse)
-            QuizeData.answeredQuestionsList.add(data)
+        quizeData.apply {
+           promptRemaining(data.isPromtUse)
+           answeredQuestionsList.add(data)
         }
         getFragment()
     }
 
     private fun getFragment() {
         val fragment: Fragment
-        val type = QuizeData.getRandomQuestion()
+        val type = quizeData.getRandomQuestion()
         Log.d("IntroActivity", "getFragment")
         if (type is ChoiceQuestion) {
             Log.d("IntroActivity", "SingleSelectionFragment")
@@ -63,7 +62,7 @@ class QuestionActivity : BaseMenuActivity(), OnFragmentListener {
                 fragment
             ).commit()
             listener = fragment
-            listener.results(QuizeData.getRightQuantityAnswers())
+            listener.results(quizeData.getRightQuantityAnswers())
         }
     }
 }

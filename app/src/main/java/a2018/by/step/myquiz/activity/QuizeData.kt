@@ -2,11 +2,12 @@ package a2018.by.step.myquiz.activity
 
 import a2018.by.step.myquiz.data.QuestionRepository
 import a2018.by.step.myquiz.model.Question
+import android.content.Context
 import android.util.Log
 import java.util.*
 
 
-object QuizeData {
+class QuizeData(context: Context) {
     val questions = mutableListOf<Question<*>>().apply { addAll(QuestionRepository.getQuestions()) }
     var answeredQuestionsList = mutableListOf<Data>()
     var promptQuantity = 1

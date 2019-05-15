@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.widget.Toast
 
 abstract class BaseMenuActivity : AppCompatActivity() {
+    val questionActivity = QuestionActivity()
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
@@ -19,7 +21,7 @@ abstract class BaseMenuActivity : AppCompatActivity() {
             R.id.menu_logout -> logout()
             R.id.prompt -> Toast.makeText(
                 applicationContext,
-                QuizeData.promptQuantity.toString(),
+               questionActivity.quizeData.promptQuantity.toString(),
                 Toast.LENGTH_SHORT
             ).show()
             R.id.menu_Exit -> {
