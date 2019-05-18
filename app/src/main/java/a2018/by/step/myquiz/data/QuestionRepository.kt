@@ -74,7 +74,7 @@ object QuestionRepository {
                 "How much time Dzima didn't sleep",
                 "10 days",
                 "5+5"
-            )
+            ) 
         )
         questionList.add(
             TextQuestion(

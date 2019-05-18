@@ -17,91 +17,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 
-class IntroActivity : AppCompatActivity(), OnFragmentListener {
-    private val quizeData = QuizeData
-    lateinit var listener: OnActivityListener
+class IntroActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
         Log.d("IntroActivity", "rendering layout")
-        getFragment()
     }
 
-    override fun onResume() {
-        super.onResume()
-        TextQuestionFragment.newInstance()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.menu_logout -> logout()
-            R.id.prompt -> Toast.makeText(
-                applicationContext,
-                quizeData.promptQuantity.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
-            R.id.menu_Exit -> {
-                startActivity(
-                    Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME).
-                        setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                )
-            }
-            R.id.user_info -> startActivity(Intent(applicationContext, UserInfoActivity::class.java))
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun logout() {
-        SharedPreferencesHelper.clearData(applicationContext)
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
-    }
-
-
-    override fun changeFragment(data: Data) {
-        quizeData.apply {
-            promptRemaining(data.isPromtUse)
-            answeredQuestionsList.add(data)
-        }
-        getFragment()
-    }
-
-    private fun getFragment() {
-        val fragment: Fragment
-        val type = quizeData.getRandomQuestion()
-        Log.d("IntroActivity", "getFragment")
-        if (type is ChoiceQuestion) {
-            Log.d("IntroActivity", "SingleSelectionFragment")
-            fragment = SingleSelectionFragment()
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fl_fragment_container,
-                fragment
-            ).commit()
-            listener = fragment
-            listener.getQuestionTypeFromActivity(type)
-        } else if (type is TextQuestion) {
-            Log.d("IntroActivity", "TextQuestionFragment")
-            fragment = TextQuestionFragment()
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fl_fragment_container,
-                fragment
-            ).commit()
-            listener = fragment
-            listener.getQuestionTypeFromActivity(type)
-        } else {
-            fragment = ResultFragment()
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fl_fragment_container,
-                fragment
-            ).commit()
-            listener = fragment
-            listener.results(quizeData.getRightQuantityAnswers())
-        }
-    }
 
 }

@@ -5,5 +5,6 @@
     <dimen name="top_margin">8dp</dimen>
     <dimen name="start_margin">8dp</dimen>
     <dimen name="end_margin">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>
