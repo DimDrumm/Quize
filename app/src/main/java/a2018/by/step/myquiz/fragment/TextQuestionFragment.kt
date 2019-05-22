@@ -9,6 +9,7 @@ import android.view.ViewGroup
 
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.QuestionRepository
+import a2018.by.step.myquiz.model.Question
 import android.content.Context
 import kotlinx.android.synthetic.main.fragment_text_question.view.*
 import timber.log.Timber
@@ -24,10 +25,16 @@ private const val ARG_QUESTION = "question"
  *
  */
 class TextQuestionFragment : Fragment() {
+    private var question: Question<*>? = null
+
+    override fun onAttach(context: Context?) {
+        Timber.d("OnAttach")
+        super.onAttach(context)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.d("onCreate")
+        Timber.d("OnCreate ${hashCode()}")
         Timber.d("${Companion.question}")
 //        arguments?.let {
 //            question = it.getString(ARG_QUESTION)
@@ -38,46 +45,41 @@ class TextQuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Timber.d("onCreateView")
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_text_question,container,false)
-        view.tv_question_text.text.
+        Timber.d("OnCreateView")
+        val view = inflater.inflate(R.layout.fragment_text_question, container, false)
+        view.tv_question_text.text = arguments?.getString(ARG_QUESTION)
         return view
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        Timber.d("onAttach")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Timber.d("onDetach")
-    }
     override fun onStart() {
         super.onStart()
-        Timber.d("onStart")
+        Timber.d("OnStart ")
     }
 
-    override fun onStop() {
-        super.onStop()
-        Timber.d("onStop")
+    override fun onPause() {
+        Timber.d("OnPause ${hashCode()}")
+        super.onPause()
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.d("onResume ${hashCode()}")
+        Timber.d("OnResume ${hashCode()}")
         Timber.d("Arguments ${arguments?.getString(ARG_QUESTION)}")
     }
 
-    override fun onPause() {
-        super.onPause()
-        Timber.d("onPause ${hashCode()}")
+    override fun onStop() {
+        Timber.d("OnStop")
+        super.onStop()
     }
 
     override fun onDestroy() {
+        Timber.d("OnDestroy")
         super.onDestroy()
-        Timber.d("onDestroy")
+    }
+
+    override fun onDetach() {
+        Timber.d("OnDetach")
+        super.onDetach()
     }
 
     companion object {
@@ -85,10 +87,11 @@ class TextQuestionFragment : Fragment() {
         @JvmStatic
         fun newInstance(/*question: Question<*>*/) =
             TextQuestionFragment().apply {
+                //                retainInstance = true
                 Timber.d("newInstance")
                 arguments = Bundle().apply {
+                    putString(ARG_QUESTION, question?.text)
                 }
             }
     }
-
 }

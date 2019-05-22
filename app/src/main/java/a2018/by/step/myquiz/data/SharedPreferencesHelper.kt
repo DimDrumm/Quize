@@ -22,19 +22,13 @@ object SharedPreferencesHelper {
     }
 
     fun setUser(context: Context, name: String, email: String) {
-        context.getSharedPreferences(propertiesName,Context.MODE_PRIVATE).edit().apply {
-            this.putString(propertyNameName,name)
-            this.putString(propertyEmailName,email)
+        context.getSharedPreferences(propertiesName, Context.MODE_PRIVATE).edit().apply {
+            this.putString(propertyNameName, name)
+            this.putString(propertyEmailName, email)
         }.apply()
     }
 
-    fun clearData(context: Context){
-        context.getSharedPreferences(propertiesName,Context.MODE_PRIVATE).edit().clear().apply()
+    fun clearData(context: Context) {
+        context.getSharedPreferences(propertiesName, Context.MODE_PRIVATE).edit().clear().apply()
     }
-}
-
-object ResourceHelper {
-    fun f() {
-    }
-
 }

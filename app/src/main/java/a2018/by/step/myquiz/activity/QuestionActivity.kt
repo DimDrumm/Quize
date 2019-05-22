@@ -5,48 +5,50 @@ import a2018.by.step.myquiz.data.QuestionRepository
 import a2018.by.step.myquiz.fragment.SingleSelectionFragment
 import a2018.by.step.myquiz.fragment.TextQuestionFragment
 import a2018.by.step.myquiz.model.Question
-import android.content.Context
 import android.os.Bundle
 import timber.log.Timber
 
 class QuestionActivity : BaseMenuActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Timber.d("onCreate")
+        Timber.d("OnCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-       if (savedInstanceState == null) {
-           val q = QuestionRepository.getQuestions()[0]
-           supportFragmentManager.beginTransaction()
-               .replace(
-                   R.id.container_fragment,
-                   TextQuestionFragment.newInstance(/*q*/)
-               )
-       }
-    }
+        if (savedInstanceState == null) {
+            val q = QuestionRepository.getQuestions()[1]
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.container_fragment,
+                    TextQuestionFragment
+                        .newInstance(/*q*/)
+                )
+                .commit()
+        }
+}
 
-    override fun onStart() {
-        super.onStart()
-        Timber.d("onStart")
-    }
+override fun onStart() {
+    Timber.d("OnStart")
+    super.onStart()
+}
 
-    override fun onStop() {
-        super.onStop()
-        Timber.d("onStop")
-    }
+override fun onResume() {
+    super.onResume()
+    Timber.d("OnResume ${hashCode()}")
 
-    override fun onResume() {
-        super.onResume()
-        Timber.d("onResume ${hashCode()}")
-    }
+}
 
-    override fun onPause() {
-        super.onPause()
-        Timber.d("onPause ${hashCode()}")
-    }
+override fun onPause() {
+    Timber.d("OnPause ${hashCode()}")
+    super.onPause()
+}
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.d("onDestroy")
-    }
+override fun onStop() {
+    Timber.d("OnStop")
+    super.onStop()
+}
+
+override fun onDestroy() {
+    Timber.d("OnDestroy")
+    super.onDestroy()
+}
 }
