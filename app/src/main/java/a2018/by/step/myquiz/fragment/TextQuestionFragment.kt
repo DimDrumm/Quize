@@ -83,7 +83,7 @@ class TextQuestionFragment : Fragment() {
         @JvmStatic
         fun newInstance(/*question: Question<*>*/) =
             TextQuestionFragment().apply {
-                retainInstance =true
+                retainInstance = true
                 Timber.d("newInstance")
                 arguments = Bundle().apply {
                     //                    putString(ARG_QUESTION, question.text)

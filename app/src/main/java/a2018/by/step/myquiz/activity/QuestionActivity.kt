@@ -14,7 +14,7 @@ class QuestionActivity : BaseMenuActivity() {
         Timber.d("OnCreate")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-        savedInstanceState?:apply {
+        if (savedInstanceState == null) {
             val q = QuestionRepository.getQuestions()[1]
             supportFragmentManager.beginTransaction()
                 .replace(
@@ -24,31 +24,31 @@ class QuestionActivity : BaseMenuActivity() {
                 )
                 .commit()
         }
-    }
+}
 
-    override fun onStart() {
-        Timber.d("OnStart")
-        super.onStart()
-    }
+override fun onStart() {
+    Timber.d("OnStart")
+    super.onStart()
+}
 
-    override fun onResume() {
-        super.onResume()
-        Timber.d("OnResume ${hashCode()}")
+override fun onResume() {
+    super.onResume()
+    Timber.d("OnResume ${hashCode()}")
 
-    }
+}
 
-    override fun onPause() {
-        Timber.d("OnPause ${hashCode()}")
-        super.onPause()
-    }
+override fun onPause() {
+    Timber.d("OnPause ${hashCode()}")
+    super.onPause()
+}
 
-    override fun onStop() {
-        Timber.d("OnStop")
-        super.onStop()
-    }
+override fun onStop() {
+    Timber.d("OnStop")
+    super.onStop()
+}
 
-    override fun onDestroy() {
-        Timber.d("OnDestroy")
-        super.onDestroy()
-    }
+override fun onDestroy() {
+    Timber.d("OnDestroy")
+    super.onDestroy()
+}
 }
