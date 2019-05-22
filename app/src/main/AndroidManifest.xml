@@ -10,14 +10,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".QuestionActivity">
+            tools:ignore="GoogleAppIndexingWarning"
+            android:name=".QuizApp"
+            >
+        <activity android:name=".activity.QuestionActivity">
         </activity>
-        <activity android:name=".IntroActivity">
+        <activity android:name=".activity.IntroActivity">
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activity.LoginActivity">
         </activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

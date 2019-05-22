@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name"
-    <string name=""
-    <string name=""
-    <string name=""
+    <string name="app_name">MyQuiz</string>
+    <string name="name">Имя</string>
+    <string name="validate_name_error">Введите 4-16 символов</string>
+    <string name="validate_email_error">Введите правильный почтовый адрес</string>
 </resources>
