@@ -11,6 +11,7 @@ import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.QuestionRepository
 import a2018.by.step.myquiz.model.Question
 import android.content.Context
+import kotlinx.android.synthetic.main.fragment_text_question.view.*
 import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,7 +46,9 @@ class TextQuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Timber.d("OnCreateView")
-        return inflater.inflate(R.layout.fragment_text_question, container, false)
+        val view = inflater.inflate(R.layout.fragment_text_question, container, false)
+        view.tv_question_text.text = arguments?.getString(ARG_QUESTION)
+        return view
     }
 
     override fun onStart() {
@@ -59,8 +62,9 @@ class TextQuestionFragment : Fragment() {
     }
 
     override fun onResume() {
-        Timber.d("OnResume ${hashCode()}")
         super.onResume()
+        Timber.d("OnResume ${hashCode()}")
+        Timber.d("Arguments ${arguments?.getString(ARG_QUESTION)}")
     }
 
     override fun onStop() {
@@ -83,10 +87,10 @@ class TextQuestionFragment : Fragment() {
         @JvmStatic
         fun newInstance(/*question: Question<*>*/) =
             TextQuestionFragment().apply {
-                retainInstance = true
+                //                retainInstance = true
                 Timber.d("newInstance")
                 arguments = Bundle().apply {
-                    //                    putString(ARG_QUESTION, question.text)
+                    putString(ARG_QUESTION, question?.text)
                 }
             }
     }
