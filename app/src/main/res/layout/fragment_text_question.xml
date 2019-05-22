@@ -12,7 +12,6 @@
             android:id="@+id/tv_question_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
             android:textAlignment="center"
             android:textSize="@dimen/question_text_size"
             app:layout_constraintEnd_toEndOf="parent"

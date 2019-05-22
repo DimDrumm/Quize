@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.QuestionRepository
 import a2018.by.step.myquiz.model.Question
+import a2018.by.step.myquiz.model.TextQuestion
 import android.content.Context
+import kotlinx.android.synthetic.main.fragment_text_question.*
 import kotlinx.android.synthetic.main.fragment_text_question.view.*
 import timber.log.Timber
 
@@ -46,7 +48,7 @@ class TextQuestionFragment : Fragment() {
     ): View? {
         Timber.d("OnCreateView")
         val view = inflater.inflate(R.layout.fragment_text_question, container, false)
-        view.tv_question_text.text = arguments?.getString(ARG_QUESTION)
+        question = arguments?.getParcelable<TextQuestion>(ARG_QUESTION)
         return view
     }
 
@@ -64,6 +66,7 @@ class TextQuestionFragment : Fragment() {
         super.onResume()
         Timber.d("OnResume ${hashCode()}")
         Timber.d("Arguments ${arguments?.getString(ARG_QUESTION)}")
+        tv_question_text.text = question?.text
     }
 
     override fun onStop() {
@@ -82,14 +85,14 @@ class TextQuestionFragment : Fragment() {
     }
 
     companion object {
-//        val question = QuestionRepository.getQuestions()[1]
+        //        val question = QuestionRepository.getQuestions()[1]
         @JvmStatic
         fun newInstance(question: Question<*>) =
             TextQuestionFragment().apply {
                 //                retainInstance = true
                 Timber.d("newInstance")
                 arguments = Bundle().apply {
-                    putString(ARG_QUESTION, question?.text)
+                    putParcelable(ARG_QUESTION, question)
                 }
             }
     }
