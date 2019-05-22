@@ -35,7 +35,6 @@ class TextQuestionFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.d("OnCreate ${hashCode()}")
-        Timber.d("${Companion.question}")
 //        arguments?.let {
 //            question = it.getString(ARG_QUESTION)
 //        }
@@ -83,9 +82,9 @@ class TextQuestionFragment : Fragment() {
     }
 
     companion object {
-        val question = QuestionRepository.getQuestions()[1]
+//        val question = QuestionRepository.getQuestions()[1]
         @JvmStatic
-        fun newInstance(/*question: Question<*>*/) =
+        fun newInstance(question: Question<*>) =
             TextQuestionFragment().apply {
                 //                retainInstance = true
                 Timber.d("newInstance")

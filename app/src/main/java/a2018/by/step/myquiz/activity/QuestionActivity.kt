@@ -20,7 +20,7 @@ class QuestionActivity : BaseMenuActivity() {
                 .replace(
                     R.id.container_fragment,
                     TextQuestionFragment
-                        .newInstance(/*q*/)
+                        .newInstance(q)
                 )
                 .commit()
         }
