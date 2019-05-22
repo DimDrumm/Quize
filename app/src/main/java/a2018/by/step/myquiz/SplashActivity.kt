@@ -19,6 +19,6 @@ class SplashActivity : AppCompatActivity() {
                     IntroActivity::class.java
                 }
         ))
-
+        finish()
     }
 }
