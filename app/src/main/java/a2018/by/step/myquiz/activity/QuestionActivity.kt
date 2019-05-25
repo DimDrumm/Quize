@@ -2,9 +2,7 @@ package a2018.by.step.myquiz.activity
 
 import a2018.by.step.myquiz.R
 import a2018.by.step.myquiz.data.QuestionRepository
-import a2018.by.step.myquiz.fragment.SingleSelectionFragment
 import a2018.by.step.myquiz.fragment.TextQuestionFragment
-import a2018.by.step.myquiz.model.Question
 import android.os.Bundle
 import timber.log.Timber
 
@@ -15,12 +13,12 @@ class QuestionActivity : BaseMenuActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
         if (savedInstanceState == null) {
-            val q = QuestionRepository.getQuestions()[1]
+            val question = QuestionRepository.getQuestions()[1]
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.container_fragment,
                     TextQuestionFragment
-                        .newInstance(/*q*/)
+                        .newInstance(question)
                 )
                 .commit()
         }
