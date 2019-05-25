@@ -1,19 +1,18 @@
 package a2018.by.step.myquiz.fragment
 
 
+import a2018.by.step.myquiz.R
+import a2018.by.step.myquiz.model.Question
+import a2018.by.step.myquiz.model.TextQuestion
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import a2018.by.step.myquiz.R
-import a2018.by.step.myquiz.data.QuestionRepository
-import a2018.by.step.myquiz.model.Question
-import a2018.by.step.myquiz.model.TextQuestion
-import android.content.Context
 import kotlinx.android.synthetic.main.fragment_text_question.*
-import kotlinx.android.synthetic.main.fragment_text_question.view.*
+import kotlinx.android.synthetic.main.fragment_text_question.et_input_answer as etInputAnswer
+
 import timber.log.Timber
 
 // TODO: Rename parameter arguments, choose names that match
@@ -48,7 +47,15 @@ class TextQuestionFragment : Fragment() {
     ): View? {
         Timber.d("OnCreateView")
         val view = inflater.inflate(R.layout.fragment_text_question, container, false)
-        question = arguments?.getParcelable<TextQuestion>(ARG_QUESTION)
+        question = arguments?.let { it.getParcelable<TextQuestion>(ARG_QUESTION) }
+
+
+
+        btn_next.setOnClickListener {
+            question?.userAnswer = etInputAnswer.text.toString()
+                question?.checkAnswer()
+
+        }
         return view
     }
 
@@ -89,7 +96,6 @@ class TextQuestionFragment : Fragment() {
         @JvmStatic
         fun newInstance(question: Question<*>) =
             TextQuestionFragment().apply {
-                //                retainInstance = true
                 Timber.d("newInstance")
                 arguments = Bundle().apply {
                     putParcelable(ARG_QUESTION, question)
