@@ -27,6 +27,7 @@ private const val ARG_QUESTION = "question"
  *
  */
 class TextQuestionFragment : Fragment() {
+    var questionCallback: QuestionCallback? = null
     private var question: Question<*>? = null
 
     override fun onAttach(context: Context?) {
@@ -47,8 +48,24 @@ class TextQuestionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Timber.d("OnCreateView")
-        val view = inflater.inflate(R.layout.fragment_text_question, container, false)
+        val view = inflater.inflate(
+            R.layout.fragment_text_question,
+            container, false
+        )
         question = arguments?.getParcelable<TextQuestion>(ARG_QUESTION)
+       view.btn_next.setOnClickListener {
+            val userAnswer = et_input_answer.text.toString()
+
+            val correctAnswer = arguments?.let {
+                it.getParcelable<TextQuestion>(ARG_QUESTION).let { it.rightAnswer }
+            }
+
+            if (userAnswer.equals(correctAnswer, true)) {
+                questionCallback?.onQuestionAnswered(question!!.id, true)
+            } else {
+                questionCallback?.onQuestionAnswered(question!!.id, false)
+            }
+        }
         return view
     }
 
@@ -96,4 +113,8 @@ class TextQuestionFragment : Fragment() {
                 }
             }
     }
+}
+
+interface QuestionCallback {
+    fun onQuestionAnswered(id: Int, isCorrect: Boolean)
 }
