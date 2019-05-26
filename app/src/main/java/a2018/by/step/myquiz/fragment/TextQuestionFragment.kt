@@ -2,6 +2,7 @@ package a2018.by.step.myquiz.fragment
 
 
 import a2018.by.step.myquiz.R
+import a2018.by.step.myquiz.activity.QuestionActivity
 import a2018.by.step.myquiz.model.Question
 import a2018.by.step.myquiz.model.TextQuestion
 import android.content.Context
@@ -52,9 +53,9 @@ class TextQuestionFragment : Fragment() {
         question?.userAnswer = et_input_answer?.let {it.text.toString()}
         view.btn_next.setOnClickListener {
             if (question!!.checkAnswer()) {
-                questionCallback?.onQuestionAnswered(question!!.id, true)
+                questionCallback?.onQuestionAnswered(questionCallback!!.getQuestionId(), true)
             } else {
-                questionCallback?.onQuestionAnswered(question!!.id, false)
+                questionCallback?.onQuestionAnswered(questionCallback!!.getQuestionId(), false)
             }
         }
         return view
@@ -107,4 +108,5 @@ class TextQuestionFragment : Fragment() {
 
 interface QuestionCallback {
     fun onQuestionAnswered(id: Int, isCorrect: Boolean)
+    fun getQuestionId():Int
 }

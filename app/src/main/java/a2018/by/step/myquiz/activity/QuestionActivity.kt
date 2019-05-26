@@ -8,7 +8,7 @@ import android.os.Bundle
 import timber.log.Timber
 
 class QuestionActivity : BaseMenuActivity(), QuestionCallback {
-
+    private var qId:Int = 0
     override fun onQuestionAnswered(id: Int, isCorrect: Boolean) {
         Timber.d("on question #$id answer is $isCorrect")
     }
@@ -19,8 +19,11 @@ class QuestionActivity : BaseMenuActivity(), QuestionCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
         val question = QuestionRepository.getQuestions()[1]
+        qId = question.id
+        Timber.d("Question ID $qId")
         val fragment = TextQuestionFragment.newInstance(question)
         fragment.questionCallback = this
+
         Timber.d("question fragment is started: $question")
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -39,7 +42,7 @@ class QuestionActivity : BaseMenuActivity(), QuestionCallback {
 
     override fun onResume() {
         super.onResume()
-        Timber.d("OnResume ${hashCode()}")
+        Timber.d("OnResume ${hashCode()}, Question id: $qId")
 
     }
 
@@ -57,4 +60,14 @@ class QuestionActivity : BaseMenuActivity(), QuestionCallback {
         Timber.d("OnDestroy")
         super.onDestroy()
     }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putInt("questionId", qId)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun getQuestionId(): Int {
+        return qId
+    }
 }
+

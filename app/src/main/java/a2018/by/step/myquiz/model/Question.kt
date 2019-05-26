@@ -65,7 +65,6 @@ class TextQuestion(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(text)
         parcel.writeString(rightAnswer)
-        parcel.writeInt(id)
     }
 
     override fun describeContents(): Int {
@@ -79,9 +78,8 @@ class TextQuestion(
     companion object CREATOR : Parcelable.Creator<TextQuestion> {
 
         override fun createFromParcel(parcel: Parcel): TextQuestion {
-            val q = TextQuestion(parcel)
-            q.id = parcel.readInt()
-            return q
+            
+            return TextQuestion(parcel)
         }
 
         override fun newArray(size: Int): Array<TextQuestion?> {
