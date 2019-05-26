@@ -53,13 +53,11 @@ class TextQuestionFragment : Fragment() {
             container, false
         )
         question = arguments?.getParcelable<TextQuestion>(ARG_QUESTION)
-       view.btn_next.setOnClickListener {
+        view.btn_next.setOnClickListener {
             val userAnswer = et_input_answer.text.toString()
-
             val correctAnswer = arguments?.let {
                 it.getParcelable<TextQuestion>(ARG_QUESTION).let { it.rightAnswer }
             }
-
             if (userAnswer.equals(correctAnswer, true)) {
                 questionCallback?.onQuestionAnswered(question!!.id, true)
             } else {
@@ -102,11 +100,9 @@ class TextQuestionFragment : Fragment() {
     }
 
     companion object {
-        //        val question = QuestionRepository.getQuestions()[1]
         @JvmStatic
         fun newInstance(question: Question<*>) =
             TextQuestionFragment().apply {
-                //                retainInstance = true
                 Timber.d("newInstance")
                 arguments = Bundle().apply {
                     putParcelable(ARG_QUESTION, question)

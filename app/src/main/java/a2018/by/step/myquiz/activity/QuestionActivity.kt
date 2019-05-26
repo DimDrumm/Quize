@@ -21,7 +21,7 @@ class QuestionActivity : BaseMenuActivity(), QuestionCallback {
         val question = QuestionRepository.getQuestions()[1]
         val fragment = TextQuestionFragment.newInstance(question)
         fragment.questionCallback = this
-        Timber.d("question fragment is started: ${question}")
+        Timber.d("question fragment is started: $question")
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(
