@@ -58,7 +58,6 @@ class TextQuestion(
         Timber.d("In TextQuestion constructor")
     }
 
-
     override fun checkAnswer(): Boolean {
         return rightAnswer.equals(userAnswer, true)
     }
